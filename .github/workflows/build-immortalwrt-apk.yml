@@ -121,8 +121,16 @@ jobs:
         run: |
           mkdir -p artifacts
 
-          find sdk/bin/packages/"$IMMORTALWRT_ARCH" -type f \
-            \( -name 'quickfile_*.apk' -o -name 'luci-app-quickfile_*.apk' \) \
+          echo "Generated packages:"
+          find sdk/bin -type f \( -name '*.apk' -o -name '*.ipk' \) -print | sort
+
+          find sdk/bin -type f \
+            \( \
+              -name 'quickfile-*.apk' -o \
+              -name 'quickfile_*.apk' -o \
+              -name 'luci-app-quickfile-*.apk' -o \
+              -name 'luci-app-quickfile_*.apk' \
+            \) \
             -exec cp -v {} artifacts/ \;
 
           test -n "$(find artifacts -maxdepth 1 -type f -name '*.apk' -print -quit)"

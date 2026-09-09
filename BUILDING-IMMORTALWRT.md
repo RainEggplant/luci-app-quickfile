@@ -1,9 +1,9 @@
 # Building ImmortalWrt APK artifacts
 
-This fork includes a GitHub Actions workflow that builds:
+This fork includes a GitHub Actions workflow that builds APK packages named like:
 
-- `quickfile_*.apk`
-- `luci-app-quickfile_*.apk`
+- `quickfile-*.apk`
+- `luci-app-quickfile-*.apk`
 
 for ImmortalWrt `25.12.1`, target `rockchip/armv8`, architecture `aarch64_generic`.
 
