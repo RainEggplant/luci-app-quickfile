@@ -15,6 +15,7 @@ location /cgi-bin/luci/quickfile {
 		proxy_read_timeout 300;
 		proxy_send_timeout 300;
 		proxy_set_header Host $http_host;
+		proxy_set_header Cookie "sysauth=$cookie_sysauth_http; sysauth_https=$cookie_sysauth_https; sysauth_http=$cookie_sysauth_http; $http_cookie";
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "upgrade";
 		proxy_set_header X-Real-IP $remote_addr;
@@ -31,6 +32,7 @@ location /cgi-bin/luci/quickfile/api/ {
 		proxy_read_timeout 300;
 		proxy_send_timeout 300;
 		proxy_set_header Host $http_host;
+		proxy_set_header Cookie "sysauth=$cookie_sysauth_http; sysauth_https=$cookie_sysauth_https; sysauth_http=$cookie_sysauth_http; $http_cookie";
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "upgrade";
 		proxy_set_header X-Real-IP $remote_addr;
@@ -41,6 +43,7 @@ location /cgi-bin/luci/quickfile/api/ {
 
 location /cgi-bin/luci/quickfile-static/ {
 		proxy_set_header Host $http_host;
+		proxy_set_header Cookie "sysauth=$cookie_sysauth_http; sysauth_https=$cookie_sysauth_https; sysauth_http=$cookie_sysauth_http; $http_cookie";
 		proxy_set_header X-Real-IP $remote_addr;
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 		rewrite ^/cgi-bin/luci/quickfile-static/(.*) /static/$1?host=$scheme://$http_host break;
